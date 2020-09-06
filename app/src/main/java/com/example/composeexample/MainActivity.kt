@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.Composable
 import androidx.ui.core.Alignment
+import androidx.ui.core.ContextAmbient
 import androidx.ui.core.Modifier
 import androidx.ui.core.setContent
 import androidx.ui.foundation.Text
@@ -25,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                MyScreenContent2(this)
+                MyScreenContent2()
             }
         }
     }
@@ -41,8 +42,9 @@ fun MyApp(content: @Composable() () -> Unit) {
 }
 
 @Composable
-fun MyScreenContent2(context: Context) {
+fun MyScreenContent2() {
     Column(modifier = Modifier.fillMaxSize()) {
+        val context = ContextAmbient.current
         TopAppBar(title = { Text(text = "JetPack Compose") })
         VerticalScroller {
             Column(modifier = Modifier.fillMaxSize()) {
@@ -72,7 +74,7 @@ fun MyScreenContent2(context: Context) {
                     onClick = {
                         context.startActivity(Intent(context, CardListActivity::class.java))
                     }) {
-                    Text(text = "CardView with ConstraintLayout")
+                    Text(text = "CardView")
                 }
                 Button(
                     modifier = Modifier.gravity(Alignment.CenterHorizontally)
@@ -110,8 +112,5 @@ fun MyScreenContent2(context: Context) {
 @Preview("MyScreen preview")
 @Composable
 fun DefaultPreview() {
-    //MyScreenContent2()
-//    MyApp {
-//        MyScreenContent()
-//    }
+    MyScreenContent2()
 }

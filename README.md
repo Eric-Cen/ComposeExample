@@ -1,4 +1,5 @@
 # ComposeExample
+### Android Studio 4.2 Canary 8
 
 ## Tutorials from:
 1) https://codelabs.developers.google.com/codelabs/jetpack-compose-basics/#0
